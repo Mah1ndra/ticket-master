@@ -1,10 +1,15 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# load env vars
+load_dotenv()
 
 # app + config
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
 db = SQLAlchemy(app)
 
 # model
@@ -15,9 +20,6 @@ class Todo(db.Model):
 
     def __repr__(self) -> str:
         return "<Task %r>" % self.id
-
-
-
 
 # Routes
 @app.route("/", methods=["POST", "GET"])
