@@ -3,11 +3,30 @@
 {% block head %}{% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1> Update Page </h1>
-    <form action="/update/{{task.id}}" method="POST">
-        <input type="text" name="content" id="content" value="{{task.content}}">
-        <input type="submit" value="Update Task">
-    </form>  
-</div>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card rounded-3">
+            <div class="card-body p-4">
+  
+              <h4 class="text-center my-3 pb-3">Update Page</h4>
+  
+              <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" action="/update/{{task.id}}" method="POST">
+                <div class="col-12">
+                  <div class="form-outline">
+                    <input type="text" id="form1" class="form-control" name="content" value="{{task.content}}" />
+                  </div>
+                </div>
+  
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
